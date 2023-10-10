@@ -5,18 +5,22 @@ import 'dart:io';
 
 void main(){
 
-  double interest;
-  double rate;
-  double principle;
+  double time;
+  double rat_of_interest;
+  double principal;
+  double? Amount;
 
-  print("Enter the interest: ");
-  interest=double.parse(stdin.readLineSync()!);
+  print("Enter the Time: ");
+  time=double.parse(stdin.readLineSync()!);
 
   print("Enter the rate: ");
-  rate=double.parse(stdin.readLineSync()!);
+  rat_of_interest=double.parse(stdin.readLineSync()!);
 
-  print("Enter the principle: ");
-  principle=double.parse(stdin.readLineSync()!);
+  print("Enter the principal: ");
+  principal=double.parse(stdin.readLineSync()!);
+
+  Amount=(principal*time*rat_of_interest)/100;
+  print("Simple Interest: $Amount");
 
   
 }
