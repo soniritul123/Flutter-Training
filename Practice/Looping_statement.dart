@@ -21,7 +21,9 @@ there are three types of looping statements:
     updation;
   }
 
-3) do while loop:
+3) do while loop: exit control loop
+
+  condition check at exit level
 
 
 */
