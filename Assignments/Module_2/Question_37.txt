@@ -1,0 +1,4 @@
+What the order is of extends and implements keyword on Dart class declaration?
+
+- In Dart, when declaring a class, the extends keyword is used to specify the superclass (the class that the new class inherits from), 
+  and the implements keyword is used to specify the interfaces that the class implements.

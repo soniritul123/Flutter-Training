@@ -1,0 +1,6 @@
+What happens when a class implements two interfaces and both declare field (variable) with same name?
+
+- In Dart, if a class implements two interfaces, and both interfaces declare a field (variable) with the same name, the 
+  implementing class is required to provide an implementation for that field. This can be done using a getter and setter method 
+  or by directly defining the field in the implementing class. The implementing class should specify which interface's field it is 
+  implementing by explicitly referencing the interface's name followed by the field name.

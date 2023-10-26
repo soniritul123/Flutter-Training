@@ -1,0 +1,4 @@
+How do you override a private method in Dart?
+
+- In Dart, private methods (and fields) are denoted by an underscore (_) before their names. Private methods cannot be accessed 
+  directly from outside the class, including in subclasses. Therefore, you cannot override a private method in the traditional sense.

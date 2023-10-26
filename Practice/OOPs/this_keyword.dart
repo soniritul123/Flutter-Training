@@ -22,6 +22,7 @@ class Person{
 }
 
 void main(){
+  // object creation
   var obj=Person("Ritul", 444);
   obj.display();
 }

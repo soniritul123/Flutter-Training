@@ -1,0 +1,11 @@
+Which inheritance is not supported by Dart? Why? B3. What is advantage of inheritance?
+
+- Dart doesn't support multiple inheritance, and hybrid inheritance. 
+- Because class cannot extend more than one class.
+
+-> Advantages:
+It promotes reusability of the code and reduces redundant code.
+It helps to design a program in a better way.
+It makes code simpler, cleaner and saves time and money on maintenance.
+It facilitates the creation of class libraries.
+It can be used to enforce standard interface to all children classes.

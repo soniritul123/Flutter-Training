@@ -1,0 +1,6 @@
+Difference between inheritance and polymorphism
+
+- Polymorphism allows the programmer to write multiple definitions of a function. 
+  At the same time, inheritance enables the user to reuse the already written code.
+
+ 

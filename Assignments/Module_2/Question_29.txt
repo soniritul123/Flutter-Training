@@ -1,0 +1,6 @@
+What will happen if a class implements two interfaces and they both have a method with same name and signature?
+
+-  In Dart, if a class implements two interfaces, and both interfaces have a method with the same name and signature, 
+   the class is required to provide a concrete implementation of that method. When a class implements multiple interfaces with 
+   conflicting method names and signatures, Dart doesn't allow implicit resolution of the conflict. Instead, the implementing 
+   class must explicitly provide an implementation for the conflicting method, thereby resolving the ambiguity.

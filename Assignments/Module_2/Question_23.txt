@@ -1,0 +1,13 @@
+Difference between inheritance and encapsulation. B5. Difference between inheritance and abstraction.
+
+         Encapsulation	                                                Inheritance
+- Encapsulation binds the data and the                      - Inheritance enables new classes to 
+  functions that operate on that data                         receive or inherit the properties and
+  into a single unit.	                                        methods of existing classes.
+- It supports Data Hiding.	                                - It supports code reusability.
+- It keeps data safe from outside interference.	            - It allows us to do hierarchical classification of data.
+
+-> Inheritance and Abstraction
+
+-  The main difference between abstraction and inheritance is that abstraction allows hiding the internal details and displaying only the functionality to the users, 
+   while inheritance allows using properties and methods of an already existing class.

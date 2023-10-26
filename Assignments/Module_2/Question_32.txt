@@ -1,0 +1,5 @@
+How do you restrict a member of a class from inheriting by its sub classes? 
+
+- In object-oriented programming, you might encounter situations where you want to restrict a member of a class from being inherited 
+  by its subclasses. In Dart, you can achieve this by making the member private, using an underscore (_) before its name. 
+  Private members are not accessible from outside the class, including subclasses.

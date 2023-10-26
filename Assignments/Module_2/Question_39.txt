@@ -1,0 +1,9 @@
+What are the rules of method overriding in Dart?
+
+• In Dart, method overriding allows a subclass to provide a specific implementation for a method that is already defined in 
+  its superclass. Here are the key rules for method overriding in Dart:
+ 
+   i. Method Signature
+   ii. Keyword @override
+   iii. Visibility
+   iv. Covariant Parameters 
