@@ -32,7 +32,7 @@ class _MyBottomAppExampleState extends State<MyBottomAppExample> {
       ),
       bottomNavigationBar: BottomNavigationBar(backgroundColor: Colors.teal, items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home, color: Colors.black,),
+          icon: Icon(Icons.home,  color: Colors.black,),
           label: "Home" ),
          BottomNavigationBarItem(
           icon: Icon(Icons.music_note, color: Colors.black,),
