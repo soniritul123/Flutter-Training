@@ -1,0 +1,15 @@
+Items: It defines the list to display within the bottom navigation bar. It uses argument 
+BottomNavigationBarItem that contain sub-properties.
+
+CurrentIndex: It determines the current active bottom navigation bar item on the screen.
+
+onTap: It is called when we tapped one of the item on the screen.
+
+iconSize: It is used to specify the size of all bottom navigation item icons.
+
+fixedColor: It is used to set the color of the selected item. If we have not set a color to icon or title, it will be shown.
+
+type: It determines the layout and behavior of a bottom navigation bar.
+
+It behaves in two different ways that are: fixed and Shifting. If it is null, it will use fixed. 
+Otherwise, it will use Shifting where we can see an animation when we click a button.
