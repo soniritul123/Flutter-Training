@@ -1,0 +1,19 @@
+Offline Database:
+
+Flutter provides many packages to work with the database. The most used and popular packages are:
+
+spflite database: It allows to access and manipulate SQLite database.
+Firebase database: It will enable you to access and manipulate the cloud database.
+
+SQLite is a poplar database software library that provides a relational database management system for local/client storage. It is light-weight and time-tested database engine and contains features like self-contained, server-less, zero-configuration, transactional SQL database engine.
+
+Flutter SDK does not support SQLite directly. Instead, it provides a plugin sqflite, which performs all operations on the database as similar to the SQLite library. The sqflite provides most of the core functionalities related to the database are as follows:
+
+It create or open the SQLite database.
+It can execute SQL statements easily.
+It also provides an advanced query method to get information from the SQLite database.
+
+
+sqflite flutter
+path flutter
+path provider flutter

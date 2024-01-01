@@ -1,0 +1,3 @@
+navigating to different pages defines the workflow of the application, and the way to handle the navigation is known as routing. 
+Flutter provides a basic routing class MaterialPageRoute and two methods Navigator.push() and Navigator.pop() that shows how to navigate 
+between two routes.

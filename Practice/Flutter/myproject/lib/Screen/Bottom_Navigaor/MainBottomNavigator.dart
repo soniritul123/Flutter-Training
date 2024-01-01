@@ -1,26 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:myproject/Screen/Bottom_Navigaor/Home.dart';
+import 'package:myproject/Screen/Bottom_Navigaor/Music.dart';
+import 'package:myproject/Screen/Bottom_Navigaor/Settings.dart';
 
-class MyBottomAppExample extends StatefulWidget {
-  const MyBottomAppExample({super.key});
+
+class MyBottomNavigation extends StatefulWidget {
+  const MyBottomNavigation({super.key});
 
   @override
-  State<MyBottomAppExample> createState() => _MyBottomAppExampleState();
+  State<MyBottomNavigation> createState() => _MyBottomNavigationState();
 }
 
-class _MyBottomAppExampleState extends State<MyBottomAppExample> {
+class _MyBottomNavigationState extends State<MyBottomNavigation> {
   List<Widget> myContainer = [
-    Text("Home", style: TextStyle(fontSize: 26),),
-    Text("Music", style: TextStyle(fontSize: 26),),
-    Text("Settings", style: TextStyle(fontSize: 26),)
+    MyHomeScreen(),
+    MyMusicLibrary(),
+    MySettingsScreen()
   ];
 
   var currentindex = 0;
 
-  void tapClick(int index){
+  void tapClick(int index) {
     setState(() {
       currentindex = index;
     });
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,23 +35,34 @@ class _MyBottomAppExampleState extends State<MyBottomAppExample> {
       body: Center(
         child: myContainer.elementAt(currentindex),
       ),
-      bottomNavigationBar: BottomNavigationBar(backgroundColor: Colors.teal, items: [
-        BottomNavigationBarItem(
-          icon: Icon(Icons.home,  color: Colors.black,),
-          label: "Home" ),
-         BottomNavigationBarItem(
-          icon: Icon(Icons.music_note, color: Colors.black,),
-          label: "Music" ),
-         BottomNavigationBarItem(
-          icon: Icon(Icons.settings, color: Colors.black,), 
-          label: "Setting"),
-      ],
-      type: BottomNavigationBarType.shifting,
-      iconSize: 24,
-      elevation: 5,
-      onTap: tapClick,
-      currentIndex: currentindex,),
-
+      bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: Colors.teal,
+        items: [
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                color: Colors.black,
+              ),
+              label: "Home"),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.music_note,
+                color: Colors.black,
+              ),
+              label: "Music"),
+          BottomNavigationBarItem(
+              icon: Icon(
+                Icons.settings,
+                color: Colors.black,
+              ),
+              label: "Settings"),
+        ],
+        type: BottomNavigationBarType.fixed,
+        iconSize: 24,
+        elevation: 5,
+        onTap: tapClick,
+        currentIndex: currentindex,
+      ),
     );
   }
 }
