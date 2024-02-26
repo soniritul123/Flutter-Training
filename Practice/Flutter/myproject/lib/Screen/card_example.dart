@@ -12,8 +12,11 @@ class MyCardExample extends StatelessWidget {
       body: Container(
         height: 300,
         width: 300,
+        color: Colors.grey,
         child: Card(
-          color: Colors.tealAccent,
+          color: Colors.white,
+          margin: EdgeInsets.all(20),
+          child: Center(child: Text("Welcome")),
         ),
       ),
     );

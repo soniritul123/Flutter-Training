@@ -15,6 +15,7 @@ class _MyListExampleState extends State<MyListExample> {
         title: Text("List View example"),
       ),
       body: Container(
+        //width: MediaQuery.of(context).size.width,
         child: ListView(
           children: [
             ListTile(

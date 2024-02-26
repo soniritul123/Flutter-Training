@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+// flutter run -d chrome --web-renderer html
+
 class MyImageExample extends StatelessWidget {
   const MyImageExample({super.key});
 
