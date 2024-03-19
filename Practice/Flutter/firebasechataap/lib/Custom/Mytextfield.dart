@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 Widget MyTextFieldWidget(
-    TextEditingController controller,String? hintText) {
+    TextEditingController controller,String? hintText, bool? readOnly) {
   return Container(
       child: Padding(
     padding: const EdgeInsets.all(12.0),
     child: TextField(
       controller: controller,
+      enabled: readOnly,
       style: TextStyle(color: Color.fromARGB(255, 51, 10, 51), fontWeight: FontWeight.bold),
       obscureText: hintText == "Password" ? true : false,
       decoration: InputDecoration(

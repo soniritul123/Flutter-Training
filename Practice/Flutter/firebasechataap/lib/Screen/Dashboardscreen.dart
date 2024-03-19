@@ -1,7 +1,10 @@
+// import 'package:curved_labeled_navigation_bar/curved_navigation_bar.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebasechataap/Screen/Homescreen.dart';
 import 'package:firebasechataap/Screen/Profilescreen.dart';
+import 'package:firebasechataap/Screen/postscreen.dart';
 import 'package:flutter/material.dart';
 
 class Dashboard extends StatefulWidget {
@@ -16,24 +19,28 @@ class _DashboardState extends State<Dashboard> {
   PageController _pageController = PageController();
   String? Display = "";
   String? username;
-  @override
 
-  Future<void> getData() async{
+  Future<void> getData() async {
     var document = await FirebaseFirestore.instance
-    .collection("Users")
-    .doc(widget.user!.uid)
-    .get();
+        .collection("User")
+        .doc(widget.user!.uid)
+        .get();
 
     setState(() {
-      getData();
+      username = document["name"];
+      print(username);
+      print(document["email"]);
+  
     });
-
   }
 
+  @override
   void initState() {
-    // TODO: implement initState
     super.initState();
+  
   }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 177, 162, 205),
@@ -47,10 +54,13 @@ class _DashboardState extends State<Dashboard> {
       body: PageView(
         controller: _pageController,
         children: [
-          Text("Home"),
+          MyHomeScreen(),
           Text("Friends"),
+          MyPostScreen(user: widget.user),
           Text("Reel"),
-          MyProfileScreen()
+          MyProfileScreen(
+            user: widget.user,
+          )
         ],
       ),
       bottomNavigationBar: CurvedNavigationBar(
@@ -66,6 +76,11 @@ class _DashboardState extends State<Dashboard> {
           ),
           Icon(
             Icons.group_outlined,
+            size: 35,
+            color: Colors.blue,
+          ),
+          Icon(
+            Icons.add_a_photo,
             size: 35,
             color: Colors.blue,
           ),

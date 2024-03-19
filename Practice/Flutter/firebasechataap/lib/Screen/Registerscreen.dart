@@ -1,7 +1,8 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebasechataap/Custom/mycustombutton.dart';
-import 'package:firebasechataap/Custom/mytextfield.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebasechataap/Custom/Mycustombutton.dart';
+import 'package:firebasechataap/Custom/Mytextfield.dart';
 import 'package:firebasechataap/Custom/colorsfile.dart';
 import 'package:firebasechataap/Screen/Loginscreen.dart';
 import 'package:flutter/material.dart';
@@ -19,24 +20,26 @@ class _MyRegistrationScreenState extends State<MyRegistrationScreen> {
   TextEditingController _passwordController = TextEditingController();
 
   Future<void> registerUser() async {
-    UserCredential userCredential = await FirebaseAuth.instance.createUserWithEmailAndPassword(
-      email: _emailController.text.toString(), password: _passwordController.text.toString());
+    UserCredential userCredential = await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(
+            email: _emailController.text.toString(),
+            password: _passwordController.text.toString());
 
-      User? user = userCredential.user;
+    User? user = userCredential.user;
 
-  await FirebaseFirestore.instance.collection("User").doc(user!.uid).set({
-    "name": _usernameController.text.toString(),
-    "email": _emailController.text.toString(),
-    "profilepic": "",
-  });
-  
-  Navigator.pushReplacement(
-    context, 
-    MaterialPageRoute(builder: (context) => MYLoginScreen())
-      );
+    await FirebaseFirestore.instance.collection("Users").doc(user!.uid).set({
+      "name": _usernameController.text.toString(),
+      "email": _emailController.text.toString(),
+      "profilepic":
+          "https://cdn3d.iconscout.com/3d/premium/thumb/profile-5283577-4413139.png",
+    });
+
+    Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(
+          builder: (context) => MYLoginScreen(),
+        ));
   }
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +60,7 @@ class _MyRegistrationScreenState extends State<MyRegistrationScreen> {
         padding: EdgeInsets.only(left: 16, right: 16),
         child: Center(
           child: Container(
-            height: 500,
+            height: 550,
             child: Card(
               color: Color.fromRGBO(156, 131, 168, 0.498),
               elevation: 20,
@@ -74,21 +77,18 @@ class _MyRegistrationScreenState extends State<MyRegistrationScreen> {
                     SizedBox(
                       height: 30,
                     ),
-                    MyTextFieldWidget(_usernameController, "Name"),
-                    MyTextFieldWidget(_emailController, "Email"),
-                    MyTextFieldWidget(
-                        _passwordController,"Password"),
-                    GestureDetector
-                    (
-                      onTap: (){
-                        registerUser();
-                      },
-                      child: MyCustomButton("SIGN UP")),
+                    MyTextFieldWidget(_usernameController, "Username", true),
+                    MyTextFieldWidget(_emailController, "Email", true),
+                    MyTextFieldWidget(_passwordController, "Password", true),
+                    GestureDetector(
+                        onTap: () {
+                          registerUser();
+                        },
+                        child: MyCustomButton("SIGN UP")),
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: GestureDetector(
                           onTap: () {
-                           
                             Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
@@ -96,13 +96,12 @@ class _MyRegistrationScreenState extends State<MyRegistrationScreen> {
                                 ));
                           },
                           child: Text(
-                            "Already User ? Click here for login",
+                            "Already User ? Click Here for Login",
                             style: TextStyle(
                                 color: DISPLAY_TEXT_COLOR,
                                 fontWeight: FontWeight.bold),
                           )),
                     ),
-                    
                   ],
                 ),
               ),

@@ -1,49 +1,33 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebasechataap/Custom/Mycustombutton.dart';
 import 'package:firebasechataap/Custom/Mytextfield.dart';
 import 'package:firebasechataap/Custom/colorsfile.dart';
-import 'package:firebasechataap/Screen/Dashboardscreen.dart';
 import 'package:firebasechataap/Screen/Registerscreen.dart';
-import 'package:firebasechataap/Screen/forgotpassword.dart';
 import 'package:flutter/material.dart';
 
-class MYLoginScreen extends StatefulWidget {
-  const MYLoginScreen({super.key});
+class MyForgotPasswordScreen extends StatefulWidget {
+  const MyForgotPasswordScreen({super.key});
 
   @override
-  State<MYLoginScreen> createState() => _MYLoginScreenState();
+  State<MyForgotPasswordScreen> createState() => _MyForgotPasswordScreenState();
 }
 
-class _MYLoginScreenState extends State<MYLoginScreen> {
+class _MyForgotPasswordScreenState extends State<MyForgotPasswordScreen> {
   TextEditingController _emailController = TextEditingController();
-  TextEditingController _passwordController = TextEditingController();
 
-  Future<void> login() async {
-    try {
-      UserCredential userCredential = await FirebaseAuth.instance
-          .signInWithEmailAndPassword(
-              email: _emailController.text.toString(),
-              password: _passwordController.text.toString());
+  Future<void> sendForgotLink() async {
+    await FirebaseAuth.instance
+        .sendPasswordResetEmail(email: _emailController.text.toString());
 
-      User? user = userCredential.user;
-
-      Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(
-            builder: (context) => Dashboard(
-              user: user,
-            ),
-          ));
-    } catch (e) {
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        backgroundColor: Colors.white,
-        content: Text(
-          "Error : Invalid Email or password",
-          style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
-        ),
-        duration: Duration(seconds: 3),
-      ));
-    }
+    ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+      backgroundColor: Colors.white,
+      content: Text(
+        "Please check your email inbox for reset password link",
+        style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+      ),
+      duration: Duration(seconds: 3),
+    ));
   }
 
   @override
@@ -75,7 +59,7 @@ class _MYLoginScreenState extends State<MYLoginScreen> {
                     Padding(
                       padding: const EdgeInsets.all(20.0),
                       child: Text(
-                        "SIGN IN",
+                        "Forgot Password",
                         style: TextStyle(fontSize: 36, color: Colors.white),
                       ),
                     ),
@@ -83,12 +67,11 @@ class _MYLoginScreenState extends State<MYLoginScreen> {
                       height: 30,
                     ),
                     MyTextFieldWidget(_emailController, "Email", true),
-                    MyTextFieldWidget(_passwordController, "Password", true),
                     GestureDetector(
                         onTap: () {
-                          login();
+                          sendForgotLink();
                         },
-                        child: MyCustomButton("LOG IN")),
+                        child: MyCustomButton("SEND MAIL")),
                     Padding(
                       padding: const EdgeInsets.all(12.0),
                       child: GestureDetector(
@@ -106,16 +89,11 @@ class _MYLoginScreenState extends State<MYLoginScreen> {
                                 fontWeight: FontWeight.bold),
                           )),
                     ),
-                    GestureDetector(
-                      onTap: (){
-                        Navigator.push(context, MaterialPageRoute(builder: (context) =>MyForgotPasswordScreen()));
-                      },
-                      child: Text(
-                        "Forgot Password ?",
-                        style: TextStyle(
-                            color: const Color.fromARGB(255, 205, 193, 227),
-                            fontSize: 16),
-                      ),
+                    Text(
+                      "Click Here for Login ?",
+                      style: TextStyle(
+                          color: const Color.fromARGB(255, 205, 193, 227),
+                          fontSize: 16),
                     )
                   ],
                 ),
