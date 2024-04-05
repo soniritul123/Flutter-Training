@@ -1,23 +1,27 @@
 import 'package:myproject/Screen/Offline_Database/Models/Student.dart';
 import 'package:myproject/Screen/Offline_Database/repository.dart';
 
-class MyService
+class StudentService
 {
+  // object declaration
   late Repository _repository;
 
-  MyService()
+  // constructor
+  StudentService()
   {
     _repository = Repository();
   }
 
+  // insert service
   insertService(Student student) async
   {
     return await _repository.insertData("student", student.studentMap());
   }
 
+  // read service
   readService() async
   {
-    return await _repository.getData("student");
+    return await _repository.readData("student");
   }
 
   readSingleService(Student student) async
@@ -25,14 +29,16 @@ class MyService
     return await _repository.readSingleData("student", student.id);
   }
 
+  // update service
   updateService(Student student) async
   {
     return await _repository.updateData("student", student);
   }
 
- deleteService(Student student) async
+  // delete service
+  deleteService(Student student) async
   {
-    return await _repository.deleteData("student", student);
+    return await _repository.deleteData("student", student.studentMap());
   }
 
 }

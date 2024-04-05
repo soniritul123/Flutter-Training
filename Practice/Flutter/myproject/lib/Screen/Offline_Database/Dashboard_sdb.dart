@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:myproject/Screen/Offline_Database/Models/Student.dart';
 import 'package:myproject/Screen/Offline_Database/add_student_db.dart';
@@ -11,46 +12,69 @@ class MyDashboarddb extends StatefulWidget {
 }
 
 class _MyDashboarddbState extends State<MyDashboarddb> {
-late List<Student> _studentList = <Student>[]; // declaring student list
+List<Student> _studentList = []; // declaring student list
+var studentService = StudentService();
+var studentModel;
 
-getAllStudents() async{
-  var _studentModel = Student();
-  var _service = MyService();
 
-  var _allStudent = await _service.readService();
+@override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
 
-  _allStudent.forEach((student) => {
-    _studentModel.id = student['id'],
-    _studentModel.name = student['name'],
-    _studentModel.subject = student['subject'],
-    _studentModel.city = student['city'],
+  getRecordsfromDB() async{
+ 
+  var studentService = StudentService();
 
-    _studentList.add(_studentModel)
+  var allStudent = await studentService.readService();
+
+  allStudent.forEach((student) => {
+    studentModel = Student();
+    setState((){
+      studentModel.id = student['id'],
+      studentModel.name = student['name'],
+      studentModel.subject = student['subject'],
+
+       studentList.add(studentModel);
+    })
+    
   });
 
 }
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.deepPurple,
+        title: Text("Dashboard"),
       ),
       body: ListView.builder(
-        itemCount: 5,
+        itemCount: _studentList.length,
         itemBuilder:(context, index) {
-          return Card(
-            child: Column(
-              children: [
-                Text("Name"),
-                Text("Subject"),
-                Text("City"),
-              ],
+          return Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Container(
+              height: 100,
+              child: Card(
+                child: ListTile(
+                  leading: CircleAvatar(
+                    child: Icon(Icons.person),
+                  ),
+                  title: Text("${_studentList[index].name}"),
+                  subtitle: Text("${_studentList[index].subject}"),
+                  trailing: Wrap(
+                    children: [Icon(Icons.edit), SizedBox(width: 20,), Icon(Icons.delete)],
+                  ),
+                ),
+              ),
             ),
           );
       },),
+
+
+
       floatingActionButton: FloatingActionButton(onPressed: (){
         Navigator.push(context, MaterialPageRoute(builder:(context) => MyAddStudentDB(),));
       },

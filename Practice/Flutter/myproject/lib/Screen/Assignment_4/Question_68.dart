@@ -1,91 +1,108 @@
+// 68. Write a code to display edit, view, delete options with context menu
+// in listview and also perform respective operation on user's choice
+
 import 'package:flutter/material.dart';
 
-class MyContextMenu extends StatefulWidget {
-  const MyContextMenu({super.key});
+class Question68 extends StatefulWidget {
+  const Question68({super.key});
 
   @override
-  State<MyContextMenu> createState() => _MyContextMenuState();
+  State<Question68> createState() => _Question68State();
 }
 
-class _MyContextMenuState extends State<MyContextMenu> {
-  //Creating a variable for controller of text editor
-  TextEditingController _name_controller = new TextEditingController();
-  String enteredname = "";
+class _Question68State extends State<Question68> {
+  TextEditingController _q68controller = TextEditingController();
+  List Q68list = [];
+  var editindex;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.deepPurple,
       appBar: AppBar(
+        title: Text("Question_68"),
         backgroundColor: Colors.deepPurple,
-        title: Text("Context Menu"),
       ),
       body: Column(
         children: [
-          SizedBox(
-            height: 50,
-          ),
-          Center(
-            child: Container(
-              width: 400,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(30), color: Colors.white),
-
-              //This is text Field widget for inputting values in application
-              child: TextField(
-                controller: _name_controller,
-                decoration: InputDecoration(
-                    border: InputBorder.none,
-                    hintText: "  Enter Your Name",
-                    suffixIcon: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          enteredname = _name_controller.text.toString();
-                        });
-                      },
-                      child: Icon(
-                        Icons.arrow_circle_right,
-                        color: Colors.grey,
-                      ),
-                    )),
-              ),
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: TextField(
+              controller: _q68controller,
+              decoration: InputDecoration(
+                  hintText: "enter what you want",
+                  labelText: "entry..",
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(20))),
             ),
           ),
-          SizedBox(
-            height: 50,
+          editindex!=null? ElevatedButton(
+              onPressed: () {
+                setState(() {
+                  Q68list[editindex] = _q68controller.text.toString();
+                  editindex = null;
+                  _q68controller.text = "";
+                });
+              },
+              child: Text("Edit")):
+          ElevatedButton(
+            onPressed: () {
+              setState(() {
+                Q68list.add(_q68controller.text.toString());
+                _q68controller.clear();
+              });
+            },
+            child: Text("submit"),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(
-                  "Entered Field is ---->",
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
-                Text(
-                  enteredname,
-                  style: TextStyle(fontSize: 20, color: Colors.white),
-                ),
-                PopupMenuButton(
-                  color: Colors.white,
-                  itemBuilder: (context) {
-                    return [
-                      PopupMenuItem(
-                        value: 0,
-                        child: Text("Edit"),
-                      ),
-                      PopupMenuItem(
-                        value: 1,
-                        child: Text("Delete"),
-                      ),
-                      PopupMenuItem(
-                        value: 2,
-                        child: Text("View"),
-                      ),
-                    ];
-                  },
-                )
-              ],
+         
+          SizedBox(
+            height: 20,
+          ),
+          Expanded(
+            child: ListView.builder(
+              itemCount: Q68list.length,
+              itemBuilder: (context, index) {
+                return Container(
+                  height: 100,
+                  width: MediaQuery.of(context).size.width,
+                  color: Colors.grey,
+                  child: Card(
+                    elevation: 20,
+                    margin: EdgeInsets.all(20),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        Text(Q68list[index]),
+                        PopupMenuButton(
+                          itemBuilder: (context) => [
+                            PopupMenuItem(
+                                onTap: () {
+                                  setState(() {
+                                    _q68controller.text = Q68list[index];
+                                  editindex = index;
+                                  });
+                                },
+                                child: Text("Edit")),
+                            PopupMenuItem(
+                                onTap: () {
+                                  setState(() {
+                                    _q68controller.text = Q68list[index];
+                                  });
+                                },
+                                child: Text("view")),
+                            PopupMenuItem(
+                                onTap: () {
+                                 setState(() {
+                                    Q68list.removeAt(index);
+                                 });
+                                },
+                                child: Text("delete")),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
             ),
           )
         ],

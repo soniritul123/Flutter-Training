@@ -1,26 +1,41 @@
 import 'package:flutter/material.dart';
+import 'package:myproject/Screen/Offline_Database/Dashboard_sdb.dart';
 import 'package:myproject/Screen/Offline_Database/Models/Student.dart';
 import 'package:myproject/Screen/Offline_Database/service.dart';
 
-class MyAddStudentDB extends StatefulWidget {
-  const MyAddStudentDB({super.key});
+class MyEditStudent extends StatefulWidget {
+  Student student;
+  const MyEditStudent({super.key});
 
   @override
-  State<MyAddStudentDB> createState() => _MyAddStudentDBState();
+  State<MyEditStudent> createState() => _MyEditStudentState();
 }
 
-class _MyAddStudentDBState extends State<MyAddStudentDB> {
+class _MyEditStudentState extends State<MyEditStudent> {
   TextEditingController _nameController = TextEditingController();
   TextEditingController _subjectController = TextEditingController();
-  TextEditingController _cityController = TextEditingController();
+  
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    setState(() {
+      _nameController.text = widget.student.name!;
+      _subjectController.text = widget.student.subject!;
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text("Add Student"),
+        backgroundColor: Colors.deepPurple[300],
+      ),
       body: Column(
         children: [
-          Center(child: Text("Add Student", style: TextStyle(fontSize: 25),),
-          ),
-          TextField(
+         Padding(padding: const EdgeInsets.all(12),
+         child: TextField(
             controller: _nameController,
             decoration: InputDecoration(
               border: OutlineInputBorder(
@@ -30,8 +45,9 @@ class _MyAddStudentDBState extends State<MyAddStudentDB> {
               labelText: "Name"
             ),
           ),
-          SizedBox(width: 20,),
-          TextField(
+         ),
+        Padding(padding: const EdgeInsets.all(12),
+          child: TextField(
             controller: _subjectController,
             decoration: InputDecoration(
               border: OutlineInputBorder(
@@ -41,7 +57,9 @@ class _MyAddStudentDBState extends State<MyAddStudentDB> {
               labelText: "Subject"
             ),
           ),
-         
+        ),
+        
+          
           ElevatedButton(
             onPressed: (){
               setState(() async{
@@ -63,6 +81,8 @@ class _MyAddStudentDBState extends State<MyAddStudentDB> {
 
                 _nameController.clear();
                 _subjectController.clear();
+
+                Navigator.push(context, MaterialPageRoute(builder: (context) => MyDashboarddb(),));
               });
             
             }, 

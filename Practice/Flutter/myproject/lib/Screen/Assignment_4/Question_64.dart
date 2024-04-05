@@ -1,97 +1,83 @@
+// 64. Write a code to display alert dialog with list of cities and Single
+// choice selection display selected city in TextView
+
 import 'package:flutter/material.dart';
 
-class MyAlertBoxwithvalue extends StatefulWidget {
-  const MyAlertBoxwithvalue({super.key});
+class Question64 extends StatefulWidget {
+  const Question64({super.key});
 
   @override
-  State<MyAlertBoxwithvalue> createState() => _MyAlertBoxwithvalueState();
+  State<Question64> createState() => _Question64State();
 }
 
-class _MyAlertBoxwithvalueState extends State<MyAlertBoxwithvalue> {
-  //This is a list of major cities of gujarat
-
-  List<String> cityList = [
-    "Ahmedabad",
-    "Gandhinagar",
-    "Surat",
-    "Vadodara",
-    "Mehsana"
-  ];
+class _Question64State extends State<Question64> {
+  String? Cities = "";
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Alert dialog screen with listview"),
-        backgroundColor: Colors.purple,
+        title: Text("Que 64"),
+        backgroundColor: Colors.deepPurple,
       ),
-
-      //applying center alignment to our texts and button
       body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Click here to see list of cities     ----> "),
-
-              //On click event of button an alert dialog will pop up showing list
-              ElevatedButton(
-                  style:
-                      ElevatedButton.styleFrom(backgroundColor: Colors.purple),
-                  onPressed: () {
-                    showDialog(
-                      context: context,
-                      builder: (BuildContext context) {
-                        return AlertDialog(
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(50)),
-                          title: Text("Major cities of Gujarat"),
-                          content: Container(
-                            width: double.minPositive,
-                            child: ListView.builder(
-                                //applying listview builder to automatically generate list
-                                shrinkWrap: true,
-                                itemCount: cityList.length,
-                                itemBuilder: (BuildContext context, int index) {
-                                  return ListTile(
-                                    title: Text(cityList[index]),
-
-                                    //Also we are adding an on tap event for every tile of list to show a detail on another alert dialog box
-                                    onTap: () {
-                                      showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            shape: RoundedRectangleBorder(
-                                                borderRadius:
-                                                    BorderRadius.circular(20)),
-                                            backgroundColor: Colors.purple,
-                                            title: Text(
-                                              cityList[index],
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                            content: Text(
-                                              "A city of Gujarat",
-                                              style: TextStyle(
-                                                  color: Colors.white),
-                                            ),
-                                          );
-                                        },
-                                      );
-                                    },
-                                  );
-                                }),
-                          ),
-                        );
-                      },
-                    );
-                  },
-                  child: Text("Tap"))
-            ],
-          ),
+        child: Column(
+          children: [
+            ElevatedButton(
+                onPressed: () {
+                  fun();
+                },
+                child: Text("Cities")),
+            Text("cities =$Cities")
+          ],
         ),
       ),
     );
+  }
+
+  void fun() {
+    setState(() {
+      showDialog(
+          context: context,
+          builder: (context) => AlertDialog(
+                actions: [
+                  RadioListTile(
+                      value: "udaipur",
+                      title: Text("udaipur"),
+                      groupValue: Cities,
+                      onChanged: (value) {
+                        setState(() {
+                          Cities = value;
+                        });
+                      }),
+                  RadioListTile(
+                      value: "jaipur",
+                      title: Text("jaipur"),
+                      groupValue: Cities,
+                      onChanged: (value) {
+                        setState(() {
+                          Cities = value;
+                        });
+                      }),
+                  RadioListTile(
+                      value: "Ahmdawad",
+                      title: Text("Ahmdawad"),
+                      groupValue: Cities,
+                      onChanged: (value) {
+                        setState(() {
+                          Cities = value;
+                        });
+                      }),
+                  RadioListTile(
+                      value: "Surat",
+                      title: Text("surat"),
+                      groupValue: Cities,
+                      onChanged: (value) {
+                        setState(() {
+                          Cities = value;
+                        });
+                      }),
+                ],
+              ));
+    });
   }
 }

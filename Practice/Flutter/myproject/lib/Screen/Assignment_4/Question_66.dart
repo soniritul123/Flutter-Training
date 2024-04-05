@@ -1,41 +1,59 @@
+// 66. Write a code to select Date on button's click event
+
 import 'package:flutter/material.dart';
 
-class Dateclickevent extends StatelessWidget {
-  const Dateclickevent({super.key});
+class Question66 extends StatefulWidget {
+  const Question66({super.key});
 
   @override
+  State<Question66> createState() => _Question66State();
+}
+
+class _Question66State extends State<Question66> {
+  TextEditingController _datecontroller = TextEditingController();
+  @override
   Widget build(BuildContext context) {
-    //creating a function to show date and time from in build date and time widget
-
-    selectTimePicker(BuildContext context) async {}
-
     return Scaffold(
       appBar: AppBar(
+        title: Text("Question_66"),
         backgroundColor: Colors.deepPurple,
-        title: Text("Date picker"),
       ),
-
-      // This is a program to pick date click on click event of button
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("Click here to select date    ----->  "),
-              ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.deepPurple,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20))),
-                  onPressed: () {
-                    selectTimePicker(context);
-                  },
-                  child: Text("Select Date"))
-            ],
-          ),
-        ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: TextField(
+              controller: _datecontroller,
+              decoration: InputDecoration(
+                  labelText: "Select Date",
+                  filled: true,
+                  prefixIcon: Icon(Icons.calendar_today),
+                  enabledBorder: OutlineInputBorder(borderSide: BorderSide.none),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(color: Colors.blue),
+                  )),
+              readOnly: true,
+              onTap: () {
+                _selectdate();
+              },
+            ),
+          )
+        ],
       ),
     );
+  }
+
+  Future<void> _selectdate() async {
+    DateTime? _picked = await showDatePicker(
+      context: context,
+      initialDate: DateTime.now(),
+      firstDate: DateTime(2000),
+      lastDate: DateTime(2900),
+    );
+    if (_picked != null) {
+      setState(() {
+        _datecontroller.text = _picked.toString().split(" ")[0];
+      });
+    }
   }
 }

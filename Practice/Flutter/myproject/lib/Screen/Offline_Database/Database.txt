@@ -1,0 +1,31 @@
+Database: collection of Data
+
+there are mainly 3 types of database:
+
+1) Offline Database
+2) Online Database
+3) Cloud Database
+
+Offline Database: which is simple to use and which is use database as a device storage
+            We can use only in mobile application
+
+Online Database: which is use to implement by application
+            database hosted on another server and access data using of api
+
+Cloud Database: Firebase
+
+-----------------------------------------------------
+
+if we want to implement Offline database we can use below libraries
+
+1) sqflite
+2) hive
+
+=> sqflite : which is most popular library which is use in android, ios and flutter
+
+    in android and ios we use sqlite
+    in flutter we use sqflite
+
+sqflite is a light weight database, easy to implement Offline database
+
+if we want to use sqflite we have to install package:
