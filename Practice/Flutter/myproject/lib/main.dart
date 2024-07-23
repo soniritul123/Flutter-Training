@@ -1,14 +1,14 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:myproject/Offline_Database_Assignment/AddStudent.dart';
-import 'package:myproject/Offline_Database_Assignment/Dashboard.dart';
-import 'package:myproject/Screen/NavigationDrawer/HomeScreen.dart';
 
-
-
-
-void main()
+void main() async
 {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform, );
+    
   runApp(MyApp());
 }
 class MyApp extends StatelessWidget {
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: DashBoardSqlFlite(),
+      home: AddStudentPage(),
 
       // return GetMaterialApp(
        

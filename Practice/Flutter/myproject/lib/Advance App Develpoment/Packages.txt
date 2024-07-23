@@ -1,0 +1,7 @@
+flutter pub add firebase_core
+flutter pub add firebase_auth
+flutter pub add cloud_firestore
+flutter pub add firebase_storage
+flutter pub add blurrycontainer
+flutter pub add intl_phone_field
+flutter pub add flutter_pw_validator

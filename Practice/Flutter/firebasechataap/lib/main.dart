@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:firebasechataap/Advance_App_Developmnt/LoginScreen.dart';
 import 'package:firebasechataap/Screen/Loginscreen.dart';
 
 import 'package:firebasechataap/firebase_options.dart';
@@ -24,7 +25,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MYLoginScreen(),
+      home: LoginScreenShop(),
 
     );
 

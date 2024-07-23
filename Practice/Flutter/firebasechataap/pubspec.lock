@@ -17,6 +17,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  blurrycontainer:
+    dependency: "direct main"
+    description:
+      name: blurrycontainer
+      sha256: ceb51f5bf0c746509a64fec43988a482adbcdf8bc5e0a11f3cc49b9ed35ff230
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.0"
   boolean_selector:
     dependency: transitive
     description:
@@ -230,6 +238,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.17"
+  flutter_pw_validator:
+    dependency: "direct main"
+    description:
+      name: flutter_pw_validator
+      sha256: "01960d4d701f6b972f3a2f324e202d840ecfe1b84e00522f92dece874b1c9b30"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.6.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter
@@ -320,6 +336,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.2.1+1"
+  intl_phone_field:
+    dependency: "direct main"
+    description:
+      name: intl_phone_field
+      sha256: "73819d3dfcb68d2c85663606f6842597c3ddf6688ac777f051b17814fe767bbf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.2.0"
   js:
     dependency: transitive
     description:
