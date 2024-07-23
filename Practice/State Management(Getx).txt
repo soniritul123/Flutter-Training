@@ -1,0 +1,29 @@
+GetX is a quick, stable, and light state management library in a flutter.
+
+There are many state management library in flutter such as getx, bloc, redux, mobx, provider..
+
+Using of getx we can manage state as well as we can manage routing.
+
+Benefits of getx lobrary it consume less assets and give more productivity.
+
+Getx is more powerfull, lightweight and easy to access.
+
+Its syntax easy to understatnd and give more performance.
+
+flutter pub add get
+
+
+obx: 
+- when my controller is already registed eleswhere and I want
+- minimal code/noise
+- a reactive widget
+
+GetX: 
+- when my controller isn't yet registered or
+- I want to be very explicit / obvious which controller is being used or
+- I want to run initstate calls during creation and I want
+- a reactive widget
+
+GetBuilder:
+- I want to manually decide when a widget rebuilds
+- I have several state variables that make sense to refresh together as group

@@ -51,9 +51,7 @@ class _MyListexample1State extends State<MyListexample1> {
               },
               onLongPress: (){
                 print("=====>${subjectList![index]}");
-                setState(() {
-                  subjectList!.removeAt(index);
-                });
+                
               },
               child: Card(
                 elevation: 20,

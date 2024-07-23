@@ -14,6 +14,7 @@ class MyCardExample extends StatelessWidget {
         width: 300,
         color: Colors.grey,
         child: Card(
+          
           color: Colors.white,
           margin: EdgeInsets.all(20),
           child: Center(child: Text("Welcome")),

@@ -41,6 +41,10 @@ dependencies:
   url_launcher: ^6.2.4
   http: ^1.1.0
   flutter_native_splash: ^2.3.7
+  get: ^4.6.6
+  video_player: ^2.8.5
+  chewie: ^1.7.5
+  youtube_player_flutter: ^9.0.1
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +74,7 @@ flutter:
   #   - images/a_dot_ham.jpeg
   assets:
     - assets/i.jpg
+    - assets/butterfly.mp4
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

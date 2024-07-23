@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:myproject/Screen/Online_Database_API/get_data_api_example.dart';
+import 'package:get/get.dart';
+import 'package:myproject/Offline_Database_Assignment/AddStudent.dart';
+import 'package:myproject/Offline_Database_Assignment/Dashboard.dart';
+import 'package:myproject/Screen/NavigationDrawer/HomeScreen.dart';
+
+
 
 
 void main()
@@ -13,7 +18,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: MyApiGetExample1(),
+      home: DashBoardSqlFlite(),
+
+      // return GetMaterialApp(
+       
+      //   home: MyGetXClassExample(),
 
       //initialRoute: "/",
       //routes: {

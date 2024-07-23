@@ -1,0 +1,53 @@
+Bloc: bloc is a state management package which is used to divide ui and business logic
+
+Bloc: Business logic component
+
+Bloc Widgets:
+
+- Bloc Observer
+- Repository Provider
+- Bloc Provider
+- Bloc Builder
+- Bloc Selector
+- Bloc Listener
+- Bloc Consumer
+
+1. Bloc Observer: which is obeserve below in bloc
+- onCreate()
+- onEvent()
+- onChange()
+- onTransition()
+- onError()
+- onClose()
+
+2. Repository Provider:
+
+- Repository Provider is a widget which is provide repository to children using of RepositoryProvider.of<T>(context).
+
+- It is used as a dependency injection.
+
+3. Bloc Provider:
+
+- Which is similar like repository provider which is provide bloc to children using of BlocProvider.of<T>(context).
+
+- Which is use as a dependency injection widgets.
+
+4. Bloc Builder:
+
+- Bloc Builder is a Flutter widget which is requires a bloc and builder function
+
+- Bloc Builder handles building the widget in response to new states.
+
+5. Bloc Selector:
+
+- Bloc Selector which is used to select current bloc value and filter it.
+
+- Unnecessary build prevented if the selected value does not change.
+
+6. Bloc Listener:
+
+- Block Listener is a Flutter widget which is used for functionality that needs to occur once per state change such as navigation, showing snackbar, showing dialog etc.
+
+7. Bloc Consumer:
+
+- Bloc Consumer exposes a builder and listener in order react to new states.

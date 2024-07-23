@@ -62,5 +62,13 @@ deleteData(tablename, data) async{
   return await con!.delete(tablename, where: "id = ?", whereArgs: [data["id"]]);
 }
 
+  insertRecord(table, studentMap) {}
+
+  fetchRecord(table) {}
+
+  updateRecord(table, studentMap) {}
+
+  deleteRecord(table, studentMap) {}
+
 }
 
